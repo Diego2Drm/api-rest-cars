@@ -1,0 +1,82 @@
+[
+  {
+    "id": "dcdd0fad-a94c-4810-8acc-5f108d3b18c3",
+    "model": "Civic 2022",
+    "brand": "Honda",
+    "image": "https://images.hgmsites.net/hug/2022-honda-civic-sdn_100810827_h.jpg",
+    "price": 27217,
+    "rating": 4.7
+  },
+  {
+    "id": "a1b2c3d4-e5f6-7890-abcd-1234567890ab",
+    "model": "Jetta GLI 2023",
+    "brand": "Volkswagen",
+    "image": "https://mundodoautomovelparapcd.com.br/wp-content/uploads/2022/12/volkswagen-jetta-gli-2023-01.jpg",
+    "price": 31389,
+    "rating": 4.5
+  },
+  {
+    "id": "f9e8d7c6-b5a4-3210-9876-abcdef123456",
+    "model": "Mazda 3 Hatchback 2019",
+    "brand": "Mazda",
+    "image": "https://mazdadealerbandung.com/wp-content/uploads/2021/10/Mazda-3-hatchback-1-scaled.jpg",
+    "price": 27166,
+    "rating": 4.8
+  },
+  {
+    "id": "12345678-90ab-cdef-1234-567890abcdef",
+    "model": "Corolla SE 2023",
+    "brand": "Toyota",
+    "image": "https://i.gaw.to/vehicles/photos/40/29/402975-2023-toyota-corolla.jpg",
+    "price": 25277,
+    "rating": 4.6
+  },
+  {
+    "id": "abcdef12-3456-7890-abcd-ef1234567890",
+    "model": "Elantra N Line 2021",
+    "brand": "Hyundai",
+    "image": "https://cdni.autocarindia.com/ExtraImages/20200813105557_2021-Hyundai-Elantra-N-Line-front.jpg",
+    "price": 26388,
+    "rating": 4.4
+  },
+  {
+    "id": "7890abcd-1234-5678-90ef-abcdefabcdef",
+    "model": "Sentra SR 2023",
+    "brand": "Nissan",
+    "image": "https://i.gaw.to/vehicles/photos/40/30/403054-2023-nissan-sentra.jpg",
+    "price": 23833,
+    "rating": 4.3
+  },
+  {
+    "id": "fedcba98-7654-3210-1234-56789abcdef0",
+    "model": "Peugeot 208 GT line 2019",
+    "brand": "Peugeot",
+    "image": "https://www.largus.fr/images/images/2019-peugeot-208-gt-line-01.jpg",
+    "price": 23055,
+    "rating": 4.2
+  },
+  {
+    "id": "01234567-89ab-cdef-0123-456789abcdef",
+    "model": "Kia Forte GT 2020",
+    "brand": "Kia",
+    "image": "https://www.motortrend.com/uploads/sites/5/2018/10/2020-Kia-Forte-GT-05.jpg",
+    "price": 24722,
+    "rating": 4.5
+  },
+  {
+    "id": "13579bdf-2468-ace0-1357-9bdf2468ace0",
+    "model": "Chevrolet Malibu 2024",
+    "brand": "Chevrolet",
+    "image": "https://di-sitebuilder-assets.s3.amazonaws.com/GMimages/gmMLP/chevrolet/Malibu/2024/hero.jpg",
+    "price": 27722,
+    "rating": 4.1
+  },
+  {
+    "id": "deadbeef-cafe-babe-face-feed12345678",
+    "model": "Renault Megane RS 2019",
+    "brand": "Renault",
+    "image": "https://www.hdcarwallpapers.com/walls/2019_renault_megane_rs_cup_chassis-HD.jpg",
+    "price": 33277,
+    "rating": 4.9
+  }
+]

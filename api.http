@@ -1,0 +1,15 @@
+### GET method to recover all car records
+GET http://localhost:3001/cars
+
+### GET method to recover brand car records
+GET http://localhost:3001/cars?brand=honda
+
+### GET method to recover id car records
+GET http:/localhost:3001/{id}
+
+### POST method NEW CAR 
+POST http://localhost:3001/cars
+
+### PATCh BY ID
+PATCH  http://localhost:3001/cars/{id}
+
