@@ -76,6 +76,20 @@ app.patch('/cars/:id', (req, res) => {
   return res.json(updateCar)
 })
 
+
+// DELETE CAR
+app.delete('/cars/:id', (req, res) => {
+  const { id } = req.params;
+  const deleteCar = cars.findIndex(car => car.id === id);
+
+  if (deleteCar === -1) {
+    return res.status(401).json({ message: 'Car not found' })
+  }
+
+  cars.splice(deleteCar, 1)
+  return res.json({ message: 'Car delete' })
+
+})
 const PORT = process.env.PORT ?? 3001;
 app.listen(PORT, () => {
   console.log(`Server listening on port http://localhost:${PORT}`);
