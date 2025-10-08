@@ -1,87 +1,62 @@
-import {Router} from 'express'
-import { randomUUID } from 'node:crypto';
+import { Router } from 'express'
 import { validateCar, validatePartialCar } from '../schemas/carScehmas.js';
-import { createRequire } from 'node:module';
+import { CarModel } from '../models/car.js';
 
 export const carsRouter = Router();
 
-const require = createRequire(import.meta.url);
-const cars = require('../cars.json');
 // GET ALL AND BY BRAND
-carsRouter.get('/', (req, res) => {
+carsRouter.get('/', async (req, res) => {
   const { brand } = req.query;
+  const cars = await CarModel.getAll({ brand });
 
-  if (brand) {
-    const filteredCars = cars.filter(car =>
-      car.brand.toLocaleLowerCase() === brand.toLocaleLowerCase()
-    )
-    if (filteredCars.length === 0) {
-      res.status(400).json({ message: 'Brand not Found' })
-    }
-    return res.json(filteredCars)
+  if (cars.length === 0) {
+    res.status(400).json({ message: 'Brand not Found' })
   }
-
   res.json(cars)
 })
 
 // GET BY ID
-carsRouter.get('/:id', (req, res) => {
-  const { id } = req.params
-
-  const carById = cars.find(car => car.id === id)
+carsRouter.get('/:id', async (req, res) => {
+  const { id } = req.params;
+  const carById = await CarModel.getById({ id });
   if (carById) return res.json(carById);
-
   res.status(400).json({ message: 'Car not found' })
 
 })
 
 // POST CAR
-carsRouter.post('/', (req, res) => {
+carsRouter.post('/', async (req, res) => {
   const result = validateCar(req.body);
 
   if (result.error) {
     return res.status(400).json({ error: JSON.parse(result.error.message) })
   }
+  const newCar = await CarModel.create({ input: result.data })
 
-  const newCar = {
-    id: randomUUID(),
-    ...result.data
-  }
-
-  cars.push(newCar);
   res.status(201).json(newCar)
 })
 
 // PATCH CAR
-carsRouter.patch('/:id', (req, res) => {
+carsRouter.patch('/:id', async (req, res) => {
   const result = validatePartialCar(req.body);
+
+  if (!result.success) {
+    return res.status(400).json({ error: JSON.parse(result.error.message) })
+  }
+
   const { id } = req.params;
+  const updateCar = await CarModel.update({ id, input: result.data })
 
-  const carIndex = cars.findIndex(car => car.id === id);
-  if (carIndex === -1) {
-    res.status(400).json({ message: 'Car not found' })
-  }
-
-  const updateCar = {
-    ...cars[carIndex],
-    ...result.data,
-  }
-
-  cars[carIndex] = updateCar
   return res.json(updateCar)
 })
 
 
 // DELETE CAR
-carsRouter.delete('/:id', (req, res) => {
+carsRouter.delete('/:id', async (req, res) => {
   const { id } = req.params;
-  const deleteCar = cars.findIndex(car => car.id === id);
-
+  const deleteCar = await CarModel.delete({ id })
   if (deleteCar === -1) {
     return res.status(401).json({ message: 'Car not found' })
   }
-
-  cars.splice(deleteCar, 1)
   return res.json({ message: 'Car delete' })
-
 })
