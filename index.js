@@ -6,15 +6,15 @@ app.disable('x-powered-by')
 app.use(express.json())
 
 app.get('/cars', (req, res) => {
-  const { brand} = req.query;
+  const { brand } = req.query;
 
-  if(brand){
-    const filteredCars = cars.filter(car => 
+  if (brand) {
+    const filteredCars = cars.filter(car =>
       car.brand.toLocaleLowerCase() === brand.toLocaleLowerCase()
     )
 
-    if(filteredCars.length === 0){
-      res.status(400).json({message: 'Brand not Found'})
+    if (filteredCars.length === 0) {
+      res.status(400).json({ message: 'Brand not Found' })
     }
 
     return res.json(filteredCars)
@@ -24,6 +24,15 @@ app.get('/cars', (req, res) => {
   res.json(cars)
 })
 
+app.get('/cars/:id', (req, res) => {
+  const { id } = req.params
+
+  const carById = cars.find(car => car.id === id)
+  if (carById) return res.json(carById);
+
+  res.status(400).json({ message: 'Car not found' })
+
+})
 
 
 const PORT = process.env.PORT ?? 3001;

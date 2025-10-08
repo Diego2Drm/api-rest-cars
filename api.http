@@ -5,7 +5,7 @@ GET http://localhost:3001/cars
 GET http://localhost:3001/cars?brand=honda
 
 ### GET method to recover id car records
-GET http:/localhost:3001/{id}
+GET http://localhost:3001/cars/f9e8d7c6-b5a4-3210-9876-abcdef123456
 
 ### POST method NEW CAR 
 POST http://localhost:3001/cars
