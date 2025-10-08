@@ -20,5 +20,10 @@ Content-Type: application/json
 }
 
 ### PATCh BY ID
-PATCH  http://localhost:3001/cars/{id}
+PATCH  http://localhost:3001/cars/f9e8d7c6-b5a4-3210-9876-abcdef123456
+Content-Type: application/json
+
+{
+  "rating": 5
+}
 

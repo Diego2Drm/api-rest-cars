@@ -1,7 +1,7 @@
 const express = require('express');
 const cars = require('./cars.json')
 const crypto = require('node:crypto');
-const { validateCar } = require('./schemas/carScehmas');
+const { validateCar, validatePartialCar } = require('./schemas/carScehmas');
 
 const app = express();
 app.disable('x-powered-by')
@@ -55,6 +55,24 @@ app.post('/cars', (req, res) => {
   res.status(201).json(newCar)
 })
 
+// PATCH CAR
+app.patch('/cars/:id', (req, res) => {
+  const result = validatePartialCar(req.body);
+  const { id } = req.params;
+
+  const carIndex = cars.findIndex(car => car.id === id);
+  if (carIndex === -1) {
+    res.status(400).json({ message: 'Car not found' })
+  }
+
+  const updateCar = {
+    ...cars[carIndex],
+    ...result.data,
+  }
+
+  cars[carIndex] = updateCar
+  return res.json(updateCar)
+})
 
 const PORT = process.env.PORT ?? 3001;
 app.listen(PORT, () => {

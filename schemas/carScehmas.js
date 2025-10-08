@@ -20,7 +20,12 @@ function validateCar(object) {
   return carSchema.safeParse(object)
 }
 
+function validatePartialCar(object) {
+  return carSchema.partial().safeParse(object);
+}
+
 
 module.exports = {
-  validateCar
+  validateCar,
+  validatePartialCar
 }
