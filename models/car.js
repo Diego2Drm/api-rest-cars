@@ -11,7 +11,7 @@ export class CarModel {
       // )
       // return res.json(filteredCars)
       return cars.filter(car =>
-        car.brand.toLocaleLowerCase() === brand.toLocaleLowerCase()
+        car.brand?.toLocaleLowerCase() === brand.toLocaleLowerCase()
       )
     }
     return cars
