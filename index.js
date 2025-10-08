@@ -1,11 +1,13 @@
 const express = require('express');
 const cars = require('./cars.json')
 const crypto = require('node:crypto');
+const cors = require('cors');
 const { validateCar, validatePartialCar } = require('./schemas/carScehmas');
 
 const app = express();
-app.disable('x-powered-by')
-app.use(express.json())
+app.disable('x-powered-by');
+app.use(express.json());
+app.use(cors());
 
 // GET ALL AND BY BRAND
 app.get('/cars', (req, res) => {
