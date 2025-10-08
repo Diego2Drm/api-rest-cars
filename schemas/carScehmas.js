@@ -1,4 +1,4 @@
-const z = require('zod');
+import z from 'zod';
 
 const carSchema = z.object({
   model: z.string({
@@ -16,16 +16,16 @@ const carSchema = z.object({
   rating: z.number().min(0).max(5).default(3)
 })
 
-function validateCar(object) {
+export function validateCar(object) {
   return carSchema.safeParse(object)
 }
 
-function validatePartialCar(object) {
+export function validatePartialCar(object) {
   return carSchema.partial().safeParse(object);
 }
 
 
-module.exports = {
-  validateCar,
-  validatePartialCar
-}
+// module.exports = {
+//   validateCar,
+//   validatePartialCar
+// }

@@ -1,13 +1,17 @@
-const express = require('express');
-const cars = require('./cars.json')
-const crypto = require('node:crypto');
-const cors = require('cors');
-const { validateCar, validatePartialCar } = require('./schemas/carScehmas');
+import express from 'express';
+// import cars from './cars.json';
+import { randomUUID } from 'node:crypto';
+import cors from 'cors';
+import { validateCar, validatePartialCar } from './schemas/carScehmas.js';
+import { createRequire } from 'node:module';
 
 const app = express();
 app.disable('x-powered-by');
 app.use(express.json());
 app.use(cors());
+
+const require = createRequire(import.meta.url);
+const cars = require('./cars.json')
 
 // GET ALL AND BY BRAND
 app.get('/cars', (req, res) => {
@@ -49,7 +53,7 @@ app.post('/cars', (req, res) => {
   }
 
   const newCar = {
-    id: crypto.randomUUID(),
+    id: randomUUID(),
     ...result.data
   }
 
