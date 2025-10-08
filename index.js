@@ -1,10 +1,13 @@
 const express = require('express');
 const cars = require('./cars.json')
+const crypto = require('node:crypto');
+const { validateCar } = require('./schemas/carScehmas');
 
 const app = express();
 app.disable('x-powered-by')
 app.use(express.json())
 
+// GET ALL AND BY BRAND
 app.get('/cars', (req, res) => {
   const { brand } = req.query;
 
@@ -24,6 +27,7 @@ app.get('/cars', (req, res) => {
   res.json(cars)
 })
 
+// GET BY ID
 app.get('/cars/:id', (req, res) => {
   const { id } = req.params
 
@@ -32,6 +36,23 @@ app.get('/cars/:id', (req, res) => {
 
   res.status(400).json({ message: 'Car not found' })
 
+})
+
+// POST CAR
+app.post('/cars', (req, res) => {
+  const result = validateCar(req.body);
+
+  if (result.error) {
+    return res.status(400).json({ error: JSON.parse(result.error.message) })
+  }
+
+  const newCar = {
+    id: crypto.randomUUID(),
+    ...result.data
+  }
+
+  cars.push(newCar);
+  res.status(201).json(newCar)
 })
 
 

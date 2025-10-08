@@ -7,8 +7,17 @@ GET http://localhost:3001/cars?brand=honda
 ### GET method to recover id car records
 GET http://localhost:3001/cars/f9e8d7c6-b5a4-3210-9876-abcdef123456
 
-### POST method NEW CAR 
+### POST method new car
 POST http://localhost:3001/cars
+Content-Type: application/json
+
+{
+ "model": "Mustang 1969",
+ "brand": "Ford",
+ "image": "https://www.mustangspecs.com/wp-content/uploads/2020/09/932435-scaled.jpg",
+ "price": 54355,
+ "rating": 4.5
+}
 
 ### PATCh BY ID
 PATCH  http://localhost:3001/cars/{id}
