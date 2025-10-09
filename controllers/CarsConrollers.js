@@ -30,7 +30,7 @@ export class CarCrontoller {
     if (result.error) {
       return res.status(400).json({ error: JSON.parse(result.error.message) })
     }
-    const newCar = await CarModel.create({ input: result.data })
+    const newCar = await CarModel.create(result.data)
 
     res.status(201).json(newCar)
   }
