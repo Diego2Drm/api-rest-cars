@@ -9,7 +9,7 @@ export class CarCrontoller {
     const cars = await CarModel.getAll({ brand });
 
     if (cars.length === 0) {
-     return res.status(400).json({ message: 'Brand not Found' })
+      return res.status(400).json({ message: 'Brand not Found' })
     }
     res.json(cars)
   }
